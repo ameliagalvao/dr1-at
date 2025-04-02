@@ -1,14 +1,15 @@
 package org.example.assessmentdr1.exercicio_4;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class HomePage {
     private WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -25,6 +26,16 @@ public class LoginPage {
     @FindBy(css = ".login-form p")
     private WebElement errorMsg;
 
+    @FindBy(linkText = "Logout")
+    private WebElement logoutLink;
+
+    @FindBy(linkText = "Delete Account")
+    private WebElement deleteAccountLink;
+
+    @FindBy(linkText = "Signup / Login")
+    private WebElement signupLoginLink;
+
+
     public void enterEmail(String email) {
         emailInput.sendKeys(email);
     }
@@ -39,5 +50,18 @@ public class LoginPage {
 
     public String getErrorMessage() {
         return errorMsg.getText();
+    }
+
+    public void logout() {
+        logoutLink.click();
+    }
+
+    public void clickSignupLogin() {
+        signupLoginLink.click();
+    }
+
+    public void deleteAccount() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", deleteAccountLink);
+        deleteAccountLink.click();
     }
 }

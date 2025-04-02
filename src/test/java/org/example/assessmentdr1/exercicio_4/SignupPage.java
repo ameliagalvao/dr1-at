@@ -62,6 +62,9 @@ public class SignupPage {
     @FindBy(xpath = "//button[text()='Create Account']")
     private WebElement createAccountButton;
 
+    @FindBy(linkText = "Continue")
+    private WebElement continueLink;
+
     public void fillSignupForm(String name, String email) {
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
@@ -84,6 +87,11 @@ public class SignupPage {
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", createAccountButton);
         createAccountButton.click();
+    }
+
+    public void clickContinueAfterAccountCreated() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueLink);
+        continueLink.click();
     }
 
 }
