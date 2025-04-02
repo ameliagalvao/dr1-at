@@ -52,7 +52,7 @@ public class MathFunctionsTest {
     }
 
     @Property
-    boolean averageShouldBeBetweenMinAndMax(@ForAll("nonEmptyIntArrays") int[] values) {
+    boolean averageShouldBeBetweenMinMax(@ForAll("nonEmptyIntArrays") int[] values) {
         double avg = math.CalculateAverage(values);
         int min = java.util.Arrays.stream(values).min().orElseThrow();
         int max = java.util.Arrays.stream(values).max().orElseThrow();
