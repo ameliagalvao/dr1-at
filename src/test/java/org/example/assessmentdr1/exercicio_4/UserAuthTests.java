@@ -42,22 +42,8 @@ public class UserAuthTests {
         // Confirmar que foi redirecionado para página de informações da conta
         Assertions.assertTrue(driver.getPageSource().contains("Enter Account Information"));
 
-        // Preencher informações obrigatórias
-        driver.findElement(By.id("id_gender1")).click();
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.id("days")).sendKeys("1");
-        driver.findElement(By.id("months")).sendKeys("January");
-        driver.findElement(By.id("years")).sendKeys("2000");
-        driver.findElement(By.id("first_name")).sendKeys("Test");
-        driver.findElement(By.id("last_name")).sendKeys("User");
-        driver.findElement(By.id("address1")).sendKeys("123 Main St");
-        driver.findElement(By.id("state")).sendKeys("State");
-        driver.findElement(By.id("city")).sendKeys("City");
-        driver.findElement(By.id("zipcode")).sendKeys("12345");
-        driver.findElement(By.id("mobile_number")).sendKeys("1234567890");
-        WebElement createAccountButton = driver.findElement(By.xpath("//button[text()='Create Account']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", createAccountButton);
-        createAccountButton.click();
+        // Preencher campos
+        signupPage.fillAccountInfoAndSubmit(password);
 
         // Confirmar criação da conta
         Assertions.assertTrue(driver.getPageSource().contains("Account Created!"));
