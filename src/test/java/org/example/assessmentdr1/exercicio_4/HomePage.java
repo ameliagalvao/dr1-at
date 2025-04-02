@@ -24,7 +24,7 @@ public class HomePage {
     private WebElement loginButton;
 
     @FindBy(css = ".login-form p")
-    private WebElement errorMsg;
+    private WebElement loginErrorMessage;
 
     @FindBy(linkText = "Logout")
     private WebElement logoutLink;
@@ -48,8 +48,8 @@ public class HomePage {
         loginButton.click();
     }
 
-    public String getErrorMessage() {
-        return errorMsg.getText();
+    public String getLoginErrorMessage() {
+        return loginErrorMessage.getText();
     }
 
     public void logout() {
@@ -64,4 +64,5 @@ public class HomePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", deleteAccountLink);
         deleteAccountLink.click();
     }
+
 }

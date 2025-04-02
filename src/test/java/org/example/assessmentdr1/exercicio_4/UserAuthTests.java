@@ -1,7 +1,6 @@
 package org.example.assessmentdr1.exercicio_4;
 
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
