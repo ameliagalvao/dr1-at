@@ -48,7 +48,7 @@ public class ViaCepApiTest {
         @Test
         void testCepVazio() throws Exception {
             HttpResponse<String> response = get("https://viacep.com.br/ws//json/");
-            assertEquals(404, response.statusCode());
+            assertEquals(400, response.statusCode());
         }
     }
 
@@ -93,19 +93,19 @@ public class ViaCepApiTest {
         @Test
         void testUFVazio() throws Exception {
             HttpResponse<String> response = get("https://viacep.com.br/ws//Sao%20Paulo/Avenida%20Paulista/json/");
-            assertEquals(404, response.statusCode());
+            assertEquals(400, response.statusCode());
         }
 
         @Test
         void testCidadeVazia() throws Exception {
             HttpResponse<String> response = get("https://viacep.com.br/ws/SP//Avenida%20Paulista/json/");
-            assertEquals(404, response.statusCode());
+            assertEquals(400, response.statusCode());
         }
 
         @Test
         void testLogradouroVazio() throws Exception {
             HttpResponse<String> response = get("https://viacep.com.br/ws/SP/Sao%20Paulo//json/");
-            assertEquals(404, response.statusCode());
+            assertEquals(400, response.statusCode());
         }
     }
 
