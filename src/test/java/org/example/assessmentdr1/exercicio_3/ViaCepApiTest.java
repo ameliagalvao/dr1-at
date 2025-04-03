@@ -23,7 +23,7 @@ public class ViaCepApiTest {
         void testCepInexistente() throws Exception {
             HttpResponse<String> response = get("https://viacep.com.br/ws/00000000/json/");
             assertEquals(200, response.statusCode());
-            assertTrue(response.body().contains("\"erro\": true"));
+            assertTrue(response.body().contains("\"erro\": \"true\""));
         }
 
         @Test
